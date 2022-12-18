@@ -1,25 +1,26 @@
-    function sendd() {
+    window.onload = setUsername;
+    
+    let userName = window.localStorage.getItem('name');
+    // if(userName == null || userName == '' || userName == 'null'){
+    //     setUsername();
+    // } 
+        
+    function setUsername(){
+        let username = prompt("Введите Ваш никнейм:");
+        window.localStorage.setItem('name', username);
+    }
+    console.log(userName);
+    
+    function sendMessage() {
 
         //получаем ввод от пользователя
         let msg = document.getElementById('msg').value;
 
         //отправляем запрос и получаем данные
         let xhr = new XMLHttpRequest();
-        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg,false);
+        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + userName,false);
         xhr.send();
 
-        //нахожу контейнер для вывода результата
-        //let output = document.getElementById('msg_input');
-
-        //очищаем контейнер
-        output.innerHTML = '';
-
-        //вывожу данные в контейнер
-        output.innerHTML = xhr.responseText;
-
-    }
-
-    function sendMessage() {
         let mess = document.getElementById('msg_input');
 
         let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
