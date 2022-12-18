@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chat1.css">
+    <title>Chat</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+
+        <div class="chat-box">
+            <div id="chat-box__body">
+                <!-- <div id="msg_input">
+                    
+                </div> -->
+                <template id="tmpl_mes">
+                    <div class="name">
+                        Имя: ${name}
+                    </div>
+                    <div class="message">
+                        Сообщение: ${message}
+                    </div>
+                    <div class="date">
+                        Дата: ${date}
+                    </div>
+                </template>
+
+            </div>
+            <div class="chat-box__footer">
+                <input id="msg" type="text" value="">
+
+                <button onclick="sendd()">Отправить</button>
+
+                <button onclick="sendMessage()">Показать чат</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <template>
+        <input id="name" oninput="sendName()" type="text" value="${name}">
+        <h5>${name}</h5>
+    </template> -->
+
+
+    <script src="main.js"></script>
+</body>
+</html>
