@@ -1,4 +1,5 @@
-function sendMessage() {
+    function sendd() {
+
         //получаем ввод от пользователя
         let msg = document.getElementById('msg').value;
 
@@ -7,7 +8,18 @@ function sendMessage() {
         xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg,false);
         xhr.send();
 
-        
+        //нахожу контейнер для вывода результата
+        //let output = document.getElementById('msg_input');
+
+        //очищаем контейнер
+        output.innerHTML = '';
+
+        //вывожу данные в контейнер
+        output.innerHTML = xhr.responseText;
+
+    }
+
+    function sendMessage() {
         let mess = document.getElementById('msg_input');
 
         let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
