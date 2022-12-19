@@ -18,16 +18,18 @@ html,body {
 }
 
 .chat-box {
+   display: flex;
+   flex-direction: column;
    height: 100%;
    box-shadow: 0 0 12px 0 black;
    overflow: hidden;
 }
 
 #chat-box__body {
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     background-image: url('fon.jpeg');
-    height: calc(100% - 55px);
     background-color: antiquewhite;
     color: white;
     padding: 10px;
@@ -60,10 +62,7 @@ html,body {
     height: fit-content;
     padding: 10px;
     opacity: 90%;
-    position: fixed;
-    bottom: 0;
     width: -webkit-fill-available;
-    z-index: 2;
 }
 
 .send-btn {
