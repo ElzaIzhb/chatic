@@ -9,10 +9,8 @@ html,body {
 }
 
 .wrapper {
-    max-width: 800px;
-    min-width: 320px;
     width: 100%;
-    height: 600px;
+    height: 100%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -22,18 +20,36 @@ html,body {
 .chat-box {
    height: 100%;
    box-shadow: 0 0 12px 0 black;
-   border-radius: 30px;
    overflow: hidden;
 }
 
 #chat-box__body {
     overflow-y: auto;
+    overflow-x: hidden;
     background-image: url('fon.jpeg');
-    height: 85%;
+    height: calc(100% - 55px);
     background-color: antiquewhite;
     color: white;
     padding: 10px;
     font-size: 2rem;
+    background-size: cover;
+    opacity: 90%;
+}
+
+#chat-box__body::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
+#chat-box__body::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 10px;
+}
+
+#chat-box__body::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: transparent;
+    border-radius: 10px;
 }
 
 .chat-box__footer {
@@ -41,15 +57,40 @@ html,body {
     justify-content: space-between;
     background-color: rgb(0, 0, 0);
     backdrop-filter: blur(5px);
-    height: 15%;
-    padding: 20px;
-}
-
-button {
-    border-radius: 10px;
-    margin-left: 5px;
-}
-
-input {
+    height: fit-content;
+    padding: 10px;
+    opacity: 90%;
+    position: fixed;
+    bottom: 0;
     width: -webkit-fill-available;
+    z-index: 2;
+}
+
+.send-btn {
+    color: white;
+    font-size: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+textarea {
+    color: white;
+    width: -webkit-fill-available;
+    min-height: 35px;
+    overflow-y: hidden;
+    resize: none;
+    background-color: black;
+    border-color: transparent;
+  }
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.642);
+}
+
+textarea:focus::placeholder { 
+    color:transparent; 
 }
