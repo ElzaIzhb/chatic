@@ -1,3 +1,9 @@
+    //функция вызова меню при клике на три точки сверху
+    function toggleMenu() {
+
+        document.getElementById('menu-right').classList.toggle('menu-right-active');
+    }
+
     //window.onload = setUsername;
     
     //let userName = window.localStorage.getItem('name');
@@ -77,19 +83,20 @@
         button.addEventListener('click', (e) =>{
             e.preventDefault();
             popubBg.classList.add('active');
-            popub.classList.add('active');            
+            popup.classList.add('active');
+            toggleMenu();            
         })
     })
 
     closePopup.addEventListener('click', ()=>{
         popubBg.classList.remove('active');
-        popub.classList.remove('active');
+        popup.classList.remove('active');
     })
 
     document.addEventListener('click', (e)=>{
         if(e.target == popubBg) {
             popubBg.classList.remove('active');
-            popub.classList.remove('active');
+            popup.classList.remove('active');
         }
     })
 

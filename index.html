@@ -8,11 +8,22 @@
     <title>Chat</title>
 </head>
 <body>
-    <button class="open-popup">Поменять имя</button>
     
     <div class="wrapper">
 
         <div class="chat-box">
+            <div class="chat-options">
+                <div class="menu-icon">
+                    <div class="menu-icon-wrap" onclick="toggleMenu()">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div id="menu-right">
+                    <button class="open-popup">Поменять имя</button>
+                </div>
+            </div>
             <div id="chat-box__body">
                 
                 <template id="tmpl_mes">
