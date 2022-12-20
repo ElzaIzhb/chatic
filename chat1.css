@@ -276,3 +276,10 @@ textarea::-webkit-scrollbar-track {
         width: 6px;
     }
 }
+
+@media (max-width: 425px) {   
+    .popup {
+        width: auto;
+        padding: 18px;
+    }
+}
