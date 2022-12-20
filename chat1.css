@@ -74,7 +74,8 @@ textarea {
     color: white;
     width: -webkit-fill-available;
     min-height: 35px;
-    overflow-y: hidden;
+    max-height: 112px;
+    overflow-y: scroll;
     resize: none;
     background-color: black;
     border-color: transparent;
