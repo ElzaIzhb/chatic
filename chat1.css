@@ -180,11 +180,11 @@ textarea:focus::placeholder {
 }
 
 .popup input:focus {
-    border-bottom: 1px solid rgb(73, 73, 235);
+    border-bottom: 1px solid #38314f;
 }
 
 .popup input:focus + .labelText {
-    color: rgb(73, 73, 235);
+    color: #38314f;
 }
 
 .popup button {
@@ -195,8 +195,8 @@ textarea:focus::placeholder {
     justify-content: center;
     color: #fff;
     font-size: 16px;
-    border: 2px solid rgb(73, 73, 235);
-    background: rgb(73, 73, 235);
+    border: 2px solid #38314f;
+    background: #38314f;
     cursor: pointer;
     text-transform: uppercase;
 
@@ -204,6 +204,6 @@ textarea:focus::placeholder {
 
 .popup button:hover {
     background: #fff;
-    color: rgb(73, 73, 235);
+    color: #38314f;
     transition: 0.5s all;
 }
