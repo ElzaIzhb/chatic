@@ -93,7 +93,7 @@ textarea:focus::placeholder {
 }
 
 .msg-sent {
-    background-color: rgb(60 174 134);
+    background: linear-gradient(45deg, rgb(60 174 134), rgb(60 97 174));
     margin: 4px 0;
     border-radius: 20px;
     padding: 10px;
