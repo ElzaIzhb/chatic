@@ -18,7 +18,7 @@
 
         //отправляем запрос и получаем данные
         let xhr = new XMLHttpRequest();
-        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + userName,false);
+        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
         xhr.send();
 
         let mess = document.getElementById('msg_input');
