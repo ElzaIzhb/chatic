@@ -73,9 +73,9 @@ html,body {
 textarea {
     color: white;
     width: -webkit-fill-available;
-    min-height: 35px;
-    max-height: 112px;
-    overflow-y: scroll;
+    min-height: 37px;
+    max-height: 82px;
+    overflow-y: auto;
     resize: none;
     background-color: black;
     border-color: transparent;
@@ -91,6 +91,20 @@ textarea::placeholder {
 
 textarea:focus::placeholder { 
     color:transparent; 
+}
+
+textarea::-webkit-scrollbar {
+    width: 2px;
+    background-color: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: transparent;
 }
 
 .msg-sent {
