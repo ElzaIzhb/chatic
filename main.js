@@ -9,7 +9,7 @@
     //    let username = prompt("Введите Ваш никнейм:");
     //    window.localStorage.setItem('name', username);
     //}
-    console.log(userName);
+    //console.log(userName);
     
     function sendMessage() {
 
