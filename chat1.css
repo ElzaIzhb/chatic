@@ -18,6 +18,7 @@ html,body {
    height: 100%;
    box-shadow: 0 0 12px 0 black;
    overflow: hidden;
+   position: relative;
 }
 
 #chat-box__body {
@@ -73,7 +74,8 @@ textarea {
     color: white;
     width: -webkit-fill-available;
     min-height: 35px;
-    overflow-y: hidden;
+    max-height: 112px;
+    overflow-y: scroll;
     resize: none;
     background-color: black;
     border-color: transparent;
@@ -92,7 +94,7 @@ textarea:focus::placeholder {
 }
 
 .msg-sent {
-    background-color: rgb(60 174 134);
+    background: linear-gradient(45deg, rgb(60 174 134), rgb(60 97 174));
     margin: 4px 0;
     border-radius: 20px;
     padding: 10px;
@@ -111,6 +113,12 @@ textarea:focus::placeholder {
     opacity: 0.7;
     font-size: 13px;
     text-align: right;
+}
+
+@media (max-width: 580px) {
+    #chat-box__body::-webkit-scrollbar {
+        width: 6px;
+    }
 }
 
  /* popup Serg */
