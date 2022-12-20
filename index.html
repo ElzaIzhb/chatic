@@ -8,7 +8,7 @@
     <title>Chat</title>
 </head>
 <body>
-    
+    <button class="open-popup">Поменять имя</button>
     <div class="wrapper">
 
         <div class="chat-box">
@@ -34,6 +34,19 @@
 
                 <div class="send-btn" onclick="sendMessage()">&#10148;</div>
             </div>
+        </div>
+
+        <div class="popupBg">
+            <form class="popup" action="">
+                <img src="cancel.png" alt="" class="close-popup">
+                <label for="">
+                    <input id="msgPopub" type="text" name="name" value="">
+                    <div class="labelText">
+                        Ваше имя
+                    </div>
+                </label>
+                <button onclick="sendpopub()" type="submit"> Отправить</button>
+            </form>
         </div>
 
     </div>

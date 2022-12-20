@@ -1,15 +1,15 @@
     window.onload = setUsername;
     
-    let userName = window.localStorage.getItem('name');
+    // let userName = window.localStorage.getItem('name');
     // if(userName == null || userName == '' || userName == 'null'){
     //     setUsername();
     // } 
         
-    function setUsername(){
-        let username = prompt("Введите Ваш никнейм:");
-        window.localStorage.setItem('name', username);
-    }
-    console.log(userName);
+    // function setUsername(){
+    //     let username = prompt("Введите Ваш никнейм:");
+    //     window.localStorage.setItem('name', username);
+    // }
+    // console.log(userName);
     
     function sendMessage() {
 
@@ -18,7 +18,7 @@
 
         //отправляем запрос и получаем данные
         let xhr = new XMLHttpRequest();
-        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + userName,false);
+        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
         xhr.send();
 
         let mess = document.getElementById('msg_input');
@@ -64,3 +64,47 @@
           }
         });
       });
+
+
+      //Попаб Serg
+
+      let popubBg = document.querySelector('.popupBg');
+    let popup = document.querySelector('.popup');
+    let openPopup = document.querySelectorAll('.open-popup');
+    let closePopup = document.querySelector('.close-popup');
+    let msgPopub = document.getElementById('msgPopub').value;
+    
+    openPopup.forEach((button) => {
+        button.addEventListener('click', (e) =>{
+            e.preventDefault();
+            popubBg.classList.add('active');
+            popub.classList.add('active');            
+        })
+    })
+
+    closePopup.addEventListener('click', ()=>{
+        popubBg.classList.remove('active');
+        popub.classList.remove('active');
+    })
+
+    document.addEventListener('click', (e)=>{
+        if(e.target == popubBg) {
+            popubBg.classList.remove('active');
+            popub.classList.remove('active');
+        }
+    })
+
+     function sendpopub() {
+        let msgPopub = document.getElementById('msgPopub').value;
+        localStorage.setItem('nameMy', msgPopub);
+     }  
+
+   let nameMy = localStorage.getItem('nameMy');
+//    console.log(nameMy);
+      
+    if (!nameMy){
+            document.addEventListener('DOMContentLoaded', function() {
+                popubBg.classList.add('active');
+                popub.classList.add('active');
+            });
+            }
