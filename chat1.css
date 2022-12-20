@@ -114,3 +114,9 @@ textarea:focus::placeholder {
     font-size: 13px;
     text-align: right;
 }
+
+@media (max-width: 580px) {
+    #chat-box__body::-webkit-scrollbar {
+        width: 6px;
+    }
+}
