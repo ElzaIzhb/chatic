@@ -37,10 +37,21 @@
         console.log(data);
 
         for (let i = 0; i < data.length; i++) {
-            //выводим данные шаблона
+            
+            if (nameMy == data[i]['name']) {
+
+            //выводим данные шаблона с добавлением класса "справа" для своих сообщений
             document.getElementById('chat-box__body').innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
                                                                                                                 .replace('${message}', data[i]['messeg'])
+                                                                                                                .replace('${date}', data[i]["date"])
+                                                                                                                .replace('${style}', 'right');
+            } else {
+                
+                //выводим данные шаблона для чужих сообщений
+                document.getElementById('chat-box__body').innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
+                                                                                                                .replace('${message}', data[i]['messeg'])
                                                                                                                 .replace('${date}', data[i]["date"]);
+            }
         }
     }
 

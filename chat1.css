@@ -170,7 +170,7 @@ textarea::-webkit-scrollbar-track {
     margin-bottom: 2px;
 }
 
-/* класс для "своих" сообщений, которые будут отображаться справа (к диву msg-sent)*/
+/* класс для 'своих' сообщений, которые будут отображаться справа (к диву msg-sent)*/
 .right {
     margin-left: auto;
 }
