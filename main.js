@@ -73,36 +73,36 @@
 
 //Попаб Serg
 
-    let popubBg = document.querySelector('.popupBg');
+    let popupBg = document.querySelector('.popupBg');
     let popup = document.querySelector('.popup');
     let openPopup = document.querySelectorAll('.open-popup');
     let closePopup = document.querySelector('.close-popup');
-    let msgPopub = document.getElementById('msgPopub').value;
+    let msgPopup = document.getElementById('msgPopup').value;
     
     openPopup.forEach((button) => {
         button.addEventListener('click', (e) =>{
             e.preventDefault();
-            popubBg.classList.add('active');
+            popupBg.classList.add('active');
             popup.classList.add('active');
             toggleMenu();            
         })
     })
 
     closePopup.addEventListener('click', ()=>{
-        popubBg.classList.remove('active');
+        popupBg.classList.remove('active');
         popup.classList.remove('active');
     })
 
     document.addEventListener('click', (e)=>{
-        if(e.target == popubBg) {
-            popubBg.classList.remove('active');
+        if(e.target == popupBg) {
+            popupBg.classList.remove('active');
             popup.classList.remove('active');
         }
     })
 
-     function sendpopub() {
-        let msgPopub = document.getElementById('msgPopub').value;
-        localStorage.setItem('nameMy', msgPopub);
+     function sendpopup() {
+        let msgPopup = document.getElementById('msgPopup').value;
+        localStorage.setItem('nameMy', msgPopup);
      }  
 
        let nameMy = localStorage.getItem('nameMy');
@@ -110,8 +110,8 @@
 
         if (!nameMy){
                 document.addEventListener('DOMContentLoaded', function() {
-                    popubBg.classList.add('active');
-                    popub.classList.add('active');
+                    popupBg.classList.add('active');
+                    popup.classList.add('active');
                 });
                 }
 
