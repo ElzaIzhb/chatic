@@ -3,19 +3,6 @@
 
         document.getElementById('menu-right').classList.toggle('menu-right-active');
     }
-
-    //window.onload = setUsername;
-    
-    //let userName = window.localStorage.getItem('name');
-    // if(userName == null || userName == '' || userName == 'null'){
-    //     setUsername();
-    // } 
-        
-    //function setUsername(){
-    //    let username = prompt("Введите Ваш никнейм:");
-    //    window.localStorage.setItem('name', username);
-    //}
-    //console.log(userName);
     
     function sendMessage() {
 
@@ -53,6 +40,12 @@
                                                                                                                 .replace('${date}', data[i]["date"]);
             }
         }
+
+        //автопрокрутка скроллбара к последнему сообщению
+        chatWindow = document.getElementById('chat-box__body'); 
+        var xH = chatWindow.scrollHeight; 
+        chatWindow.scrollTo(0, xH);
+        
     }
 
     function sendRequestGET(url) {
