@@ -170,6 +170,11 @@ textarea::-webkit-scrollbar-track {
     margin-bottom: 2px;
 }
 
+/* класс для "своих" сообщений, которые будут отображаться справа (к диву msg-sent)*/
+.right {
+    margin-left: auto;
+}
+
 .date {
     opacity: 0.7;
     font-size: 13px;
