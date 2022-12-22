@@ -9,36 +9,41 @@
         //получаем ввод от пользователя
         let msg = document.getElementById('msg').value;
 
-        //отправляем запрос и получаем данные
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
-        xhr.send();
+        //отправляем запрос на сервер, только если сообщение НЕ ПУСТОЕ
+        if (msg !== '') {
 
-        let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
+            //отправляем запрос и получаем данные
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
+            xhr.send();
 
-        //раскодируем данные
-        let data = JSON.parse(json); 
-        
-        console.log(data);
+            let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
 
-        for (let i = 0; i < data.length; i++) {
+            //раскодируем данные
+            let data = JSON.parse(json); 
             
-            if (nameMy == data[i]['name']) {
+            console.log(data);
 
-            //выводим данные шаблона с добавлением класса "справа" для своих сообщений
-            document.getElementById('chat-box__body').innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
-                                                                                                                .replace('${message}', data[i]['messeg'])
-                                                                                                                .replace('${date}', data[i]["date"])
-                                                                                                                .replace('${style}', 'right');
-            } else {
+            for (let i = 0; i < data.length; i++) {
                 
-                //выводим данные шаблона для чужих сообщений
-                document.getElementById('chat-box__body').innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
-                                                                                                                .replace('${message}', data[i]['messeg'])
-                                                                                                                .replace('${date}', data[i]["date"]);
-            }
-        }
+                if (nameMy == data[i]['name']) {
 
+                //выводим данные шаблона с добавлением класса "справа" для своих сообщений
+                document.getElementById('chat-box__body').innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
+                                                                                                                    .replace('${message}', data[i]['messeg'])
+                                                                                                                    .replace('${date}', data[i]["date"])
+                                                                                                                    .replace('${style}', 'right');
+                } else {
+                    
+                    //выводим данные шаблона для чужих сообщений
+                    document.getElementById('chat-box__body').innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
+                                                                                                                    .replace('${message}', data[i]['messeg'])
+                                                                                                                    .replace('${date}', data[i]["date"]);
+                }
+            }
+
+        }
+        
         //автопрокрутка скроллбара к последнему сообщению
         chatWindow = document.getElementById('chat-box__body'); 
         var xH = chatWindow.scrollHeight; 
