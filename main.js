@@ -11,12 +11,12 @@
 
         //отправляем запрос и получаем данные
         let xhr = new XMLHttpRequest();
-        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
+        xhr.open('GET','https://messenger.elzaizhb.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
         xhr.send();
 
         let mess = document.getElementById('msg_input');
 
-        let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
+        let json = sendRequestGET("https://replit.com/@ElzaIzhb/messenger#index.php");
 
         //раскодируем данные
         let data = JSON.parse(json); 
