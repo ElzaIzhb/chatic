@@ -14,8 +14,6 @@
         xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
         xhr.send();
 
-        let mess = document.getElementById('msg_input');
-
         let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
 
         //раскодируем данные
@@ -46,6 +44,9 @@
         var xH = chatWindow.scrollHeight; 
         chatWindow.scrollTo(0, xH);
         
+        //очистка textarea после отправки сообщения
+        document.getElementById('msg').value = '';
+
     }
 
     function sendRequestGET(url) {
