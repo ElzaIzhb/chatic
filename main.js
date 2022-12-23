@@ -104,8 +104,10 @@
     })
 
     closePopup.addEventListener('click', ()=>{
-        popupBg.classList.remove('active');
-        popup.classList.remove('active');
+        if(nameMy) {
+            popupBg.classList.remove('active');
+            popup.classList.remove('active');
+        } 
     })
 
     document.addEventListener('click', (e)=>{
@@ -128,9 +130,7 @@
                     popupBg.classList.add('active');
                     popup.classList.add('active');
                 });
-                } /* else {
-                    sendMessage();
-                } */
+        }
 
     // Serg сообщения по энтеру    
      document.getElementById('msg').addEventListener('keypress', (e)=> {
