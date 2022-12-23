@@ -125,3 +125,10 @@
                 });
                 }
 
+    // Serg сообщения по энтеру    
+     document.getElementById('msg').addEventListener('keypress', (e)=> {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }            
+        });
+
