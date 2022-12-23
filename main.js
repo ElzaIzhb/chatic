@@ -13,7 +13,7 @@
         let msg = document.getElementById('msg').value;
 
         //отправляем запрос на сервер, только если сообщение НЕ ПУСТОЕ
-        if (msg !== '') {
+        //if (msg !== '') {
 
             //отправляем запрос и получаем данные
             let xhr = new XMLHttpRequest();
@@ -54,7 +54,7 @@
                 }
             }
 
-        }
+        //}
         
         //автопрокрутка скроллбара к последнему сообщению
         chatWindow = document.getElementById('chat-box__body'); 
