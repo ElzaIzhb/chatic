@@ -4,87 +4,81 @@
         document.getElementById('menu-right').classList.toggle('menu-right-active');
     }
     
+    //функция отправки сообщений
     function sendMessage() {
-        
-        let container = document.getElementById('chat-box__body');
-        container.innerHTML = "";
 
         //получаем ввод от пользователя
         let msg = document.getElementById('msg').value;
 
-        //отправляем запрос на сервер, только если сообщение НЕ ПУСТОЕ
-        //if (msg !== '') {
+        //отправляем запрос и получаем данные
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
+        xhr.send();
 
-            //отправляем запрос и получаем данные
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET','https://nordic.sierghieipielie.repl.co/?messeg=' + msg + '&name=' + nameMy,false);
-            xhr.send();
-            
-                function sendRequestGET(url) {
-                    let xhr = new XMLHttpRequest();
-                    xhr.open('GET', url, false);
-                    xhr.send();
+        //используем прописанную ниже функцию отрисовки сообщений из jsonа с сервера
+        renderMessages();
 
-                    //отдает данные(результат)
-                    return xhr.responseText;
-                }
-
-            let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
-
-            //раскодируем данные
-            let data = JSON.parse(json); 
-            
-            //console.log(data);
-
-            for (let i = 0; i < data.length; i++) {
-                
-                if (nameMy == data[i]['name']) {
-
-                //выводим данные шаблона с добавлением класса "справа" для своих сообщений
-                container.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
-                                                                                                                    .replace('${message}', data[i]['messeg'])
-                                                                                                                    .replace('${date}', data[i]["date"])
-                                                                                                                    .replace('${style}', 'right');
-                } else {
-                    
-                    //выводим данные шаблона для чужих сообщений
-                    container.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
-                                                                                                                    .replace('${message}', data[i]['messeg'])
-                                                                                                                    .replace('${date}', data[i]["date"]);
-                }
-            }
-
-        //}
-        
-        //автопрокрутка скроллбара к последнему сообщению
-        chatWindow = document.getElementById('chat-box__body'); 
-        var xH = chatWindow.scrollHeight; 
-        chatWindow.scrollTo(0, xH);
-        
         //очистка textarea после отправки сообщения
         document.getElementById('msg').value = '';
 
     }
 
+    //шаблон функции отправки пустого гет-запроса
+    function sendRequestGET(url) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        xhr.send();
 
+        //отдает данные(результат)
+        return xhr.responseText;
+    }
 
+    //функция отрисовки сообщений
+    function renderMessages() {
+
+        //используем шаблон функции гет-запроса с нужным url-ом
+        let json = sendRequestGET("https://nordic.sierghieipielie.repl.co/index.php");
+
+        //раскодируем данные
+        let data = JSON.parse(json); 
+        
+        //console.log(data);
+
+        //html-контейнер, куда будут отрисованы сообщения
+        let container = document.getElementById('chat-box__body');
+
+        //чистим контейнер, чтобы не было дублирования  
+        container.innerHTML = "";
+
+        for (let i = 0; i < data.length; i++) {
+            
+            if (nameMy == data[i]['name']) {
+
+                //отрисовываем "свои" сообщения справа
+                container.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
+                                                                                    .replace('${message}', data[i]['messeg'])
+                                                                                    .replace('${date}', data[i]["date"])
+                                                                                    .replace('${style}', 'right');
+            } else {
+                
+                //отрисовываем "чужие" сообщения слева
+                container.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
+                                                                                    .replace('${message}', data[i]['messeg'])
+                                                                                    .replace('${date}', data[i]["date"]);
+            }
+        }
+
+        scrollToZero();
     
-    //Код jquery для растягивания поля сообщения по высоте контента (только для textarea)
-    $(function() {
-        $('#msg').on('input keyup paste', function() {
-          var $el = $(this),
-              offset = $el.innerHeight() - $el.height();
-      
-          if ($el.innerHeight() < this.scrollHeight) {
-            // Grow the field if scroll height is smaller
-            $el.height(this.scrollHeight - offset);
-          } else {
-            // Shrink the field and then re-set it to the scroll height in case it needs to shrink
-            $el.height(1);
-            $el.height(this.scrollHeight - offset);
-          }
-        });
-      });
+    }
+
+    //автопрокрутка скроллбара к последнему сообщению
+    function scrollToZero() {
+        chatWindow = document.getElementById('chat-box__body'); 
+        let xH = chatWindow.scrollHeight; 
+        chatWindow.scrollTo(0, xH);
+    }
+
 
 //Попаб Serg
 
@@ -142,7 +136,24 @@
     // Serg обновление сообщений
     setInterval(function() { 
         if (nameMy) {
-            sendMessage(); 
+            renderMessages(); 
         }
     }, 5000);
 
+
+    //Код jquery для растягивания поля сообщения по высоте контента (только для textarea)
+    $(function() {
+        $('#msg').on('input keyup paste', function() {
+            var $el = $(this),
+                offset = $el.innerHeight() - $el.height();
+        
+            if ($el.innerHeight() < this.scrollHeight) {
+            // Grow the field if scroll height is smaller
+            $el.height(this.scrollHeight - offset);
+            } else {
+            // Shrink the field and then re-set it to the scroll height in case it needs to shrink
+            $el.height(1);
+            $el.height(this.scrollHeight - offset);
+            }
+        });
+        });
