@@ -6,8 +6,8 @@
     
     function sendMessage() {
         
-        let msgV = document.getElementById('msg-v');
-        msgV.innerHTML = "";
+        let container = document.getElementById('chat-box__body');
+        container.innerHTML = "";
 
         //получаем ввод от пользователя
         let msg = document.getElementById('msg').value;
@@ -41,14 +41,14 @@
                 if (nameMy == data[i]['name']) {
 
                 //выводим данные шаблона с добавлением класса "справа" для своих сообщений
-                msgV.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
+                container.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
                                                                                                                     .replace('${message}', data[i]['messeg'])
                                                                                                                     .replace('${date}', data[i]["date"])
                                                                                                                     .replace('${style}', 'right');
                 } else {
                     
                     //выводим данные шаблона для чужих сообщений
-                    msgV.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
+                    container.innerHTML += document.getElementById('tmpl_mes').innerHTML.replace('${name}', data[i]["name"])
                                                                                                                     .replace('${message}', data[i]['messeg'])
                                                                                                                     .replace('${date}', data[i]["date"]);
                 }
