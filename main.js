@@ -128,9 +128,9 @@
                     popupBg.classList.add('active');
                     popup.classList.add('active');
                 });
-                } else {
-                    sendMessage()
-                }
+                } /* else {
+                    sendMessage();
+                } */
 
     // Serg сообщения по энтеру    
      document.getElementById('msg').addEventListener('keypress', (e)=> {
@@ -140,5 +140,9 @@
         });
 
     // Serg обновление сообщений
-    setInterval(function() { sendMessage(); }, 5000);
+    setInterval(function() { 
+        if (nameMy) {
+            sendMessage(); 
+        }
+    }, 5000);
 
