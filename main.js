@@ -139,3 +139,8 @@
                 }            
         });
 
+    // Serg обновление сообщений
+    setInterval(function() {
+        sendMessage();
+    }, 5000);
+
