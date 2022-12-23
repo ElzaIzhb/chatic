@@ -140,7 +140,5 @@
         });
 
     // Serg обновление сообщений
-    setInterval(function() {
-        sendMessage();
-    }, 5000);
+    setInterval(function() { sendMessage(); }, 5000);
 
