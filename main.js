@@ -133,6 +133,15 @@
                 }            
         });
 
+    updateChatHistory();
+
+    //отрисовка истории чата без интервала, если юзер ввел имя
+    function updateChatHistory() {
+        if (nameMy) {
+            renderMessages(); 
+        }
+    }
+    
     // Serg обновление сообщений
     setInterval(function() { 
         if (nameMy) {
